@@ -8,6 +8,7 @@ resources:
 - visualization-backend
 - visualization-frontend
 - redis
+- rabbitmq
 
 helmCharts:
 - name: kafka
