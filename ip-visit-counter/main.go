@@ -10,6 +10,8 @@ import (
 	"os"
 	"time"
 
+	amqp "github.com/rabbitmq/amqp091-go"
+
 	"github.com/gin-contrib/cors"
 	"github.com/redis/go-redis/v9"
 	"github.com/segmentio/kafka-go"
