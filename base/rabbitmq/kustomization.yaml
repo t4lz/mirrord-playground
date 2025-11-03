@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - cluster-operator
   - https://github.com/rabbitmq/messaging-topology-operator/releases/latest/download/messaging-topology-operator-with-certmanager.yaml
+  - rabbitmq-cluster.yaml
