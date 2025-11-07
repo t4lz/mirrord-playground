@@ -5,7 +5,6 @@ Each microservice has it's own `app.yaml` that should contain all of it's depend
 
 To deploy on GKE, run:
 ```
-kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.3.1/cert-manager.yaml
 kustomize build --enable-helm overlays/gke | kubectl apply -f -
 ```
 
@@ -38,13 +37,11 @@ protoc --go_out=../protogen --go_opt=paths=source_relative \
 
 For a local setup without SQS, run:
 ```
-kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.3.1/cert-manager.yaml
 kubectl apply -k overlays/local
 ```
 
 For a local setup with SQS (localstack) run:
 ```
-kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.3.1/cert-manager.yaml
 kubectl kustomize --enable-helm overlays/localstack | kubectl apply -f -
 ```
 This requires having helm installed.
