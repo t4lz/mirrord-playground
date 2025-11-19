@@ -1,0 +1,10 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: Queue
+metadata:
+  name: ip-count
+spec:
+  name: ip_count # name of the queue
+  autoDelete: false
+  durable: true # seting 'durable' to false means this queue won't survive a server restart
+  rabbitmqClusterReference:
+    name: ip-visit-rabbitmq-cluster # rabbitmqCluster must exist in the same namespace as this resource
