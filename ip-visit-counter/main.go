@@ -10,9 +10,8 @@ import (
 	"os"
 	"time"
 
-	amqp "github.com/rabbitmq/amqp091-go"
-
 	"github.com/gin-contrib/cors"
+	amqp "github.com/rabbitmq/amqp091-go"
 	"github.com/redis/go-redis/v9"
 	"github.com/segmentio/kafka-go"
 
@@ -85,6 +84,12 @@ func SetupSqs(queue_name string) error {
 	return nil
 }
 
+func SetupRabbitMq() error {
+	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
+	failOnError(err, "Failed to connect to RabbitMQ")
+	defer conn.Close()
+}
+
 // Config
 // Struct that holds local service port, remote redis host and port
 type Config struct {
@@ -155,6 +160,12 @@ func SendSqsMessage(c *gin.Context, message []byte) {
 	}
 	// Print the message ID of the sent message
 	fmt.Printf("Message sent, ID: %s\n", *result.MessageId)
+}
+
+func failOnError(err error, msg string) {
+	if err != nil {
+		log.Panicf("%s: %s", msg, err)
+	}
 }
 
 func getIpInfoGrpc(ip string, c *gin.Context) (*IpInfo, error) {

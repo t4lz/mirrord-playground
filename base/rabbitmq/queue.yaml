@@ -7,4 +7,5 @@ spec:
   autoDelete: false
   durable: true # seting 'durable' to false means this queue won't survive a server restart
   rabbitmqClusterReference:
-    name: ip-visit-rabbitmq-cluster # rabbitmqCluster must exist in the same namespace as this resource
+    # note: the RabbitMQ cluster must exist in the same namespace as this resource
+    name: ip-visit-rabbitmq-cluster
