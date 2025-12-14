@@ -85,7 +85,7 @@ func SetupSqs(queue_name string) error {
 }
 
 func SetupRabbitMq() error {
-	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
+	conn, err := amqp.Dial("amqp://guest:guest@ip-visit-rabbitmq-cluster.svc.cluster.local:5672/")
 	failOnError(err, "Failed to connect to RabbitMQ")
 	defer conn.Close()
 }
